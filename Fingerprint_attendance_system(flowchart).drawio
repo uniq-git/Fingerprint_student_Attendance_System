@@ -1,0 +1,525 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="attendanceSystemFlow" name="Fingerprint Attendance system ">
+    <mxGraphModel dx="3636" dy="1322" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="6470" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t0" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=15;fontStyle=1;fontColor=#000000;" value="APP START, BLUETOOTH CONNECTION AND MAIN MENU" vertex="1">
+          <mxGeometry height="30" width="900" x="60" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s_start" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1;" value="Start" vertex="1">
+          <mxGeometry height="50" width="200" x="430" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="s_open" parent="1" style="shape=parallelogram;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Application Open&lt;br&gt;Tap &#39;Tap to Continue&#39;" vertex="1">
+          <mxGeometry height="60" width="260" x="400" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="s_pick" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Select Paired HC-05&lt;br&gt;Bluetooth Device" vertex="1">
+          <mxGeometry height="60" width="260" x="400" y="325" as="geometry" />
+        </mxCell>
+        <mxCell id="s_dec" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" value="Connected to HC-05?" vertex="1">
+          <mxGeometry height="90" width="260" x="400" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="s_save" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Save Bluetooth Address&lt;br&gt;(each screen reconnects when opened)" vertex="1">
+          <mxGeometry height="60" width="260" x="400" y="565" as="geometry" />
+        </mxCell>
+        <mxCell id="s_menu" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Main Menu&lt;br&gt;Student Registration | Attendance | Attendance Report" vertex="1">
+          <mxGeometry height="60" width="260" x="400" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="s_err" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="Display &#39;Could not connect.&#39;" vertex="1">
+          <mxGeometry height="60" width="240" x="830" y="445" as="geometry" />
+        </mxCell>
+        <mxCell id="oVmyJr-1fL0OXAVBePDr-2" edge="1" parent="1" source="s_c1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" x="-0.3489" as="geometry">
+            <mxPoint x="-680" y="960" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s_c1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1;" value="To: Student Registration" vertex="1">
+          <mxGeometry height="50" width="230" x="115" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="oVmyJr-1fL0OXAVBePDr-3" edge="1" parent="1" source="s_c2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="oVmyJr-1fL0OXAVBePDr-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="510" y="1037.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s_c2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1;" value="To: Attendance" vertex="1">
+          <mxGeometry height="50" width="230" x="415" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="oVmyJr-1fL0OXAVBePDr-6" edge="1" parent="1" source="s_c3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="oVmyJr-1fL0OXAVBePDr-7">
+          <mxGeometry relative="1" x="-0.0326" as="geometry">
+            <mxPoint x="1510" y="1072.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s_c3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1;" value="To: Attendance Report" vertex="1">
+          <mxGeometry height="50" width="230" x="715" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="t1" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=15;fontStyle=1;fontColor=#000000;" value="STUDENT REGISTRATION AND FINGERPRINT ENROLLMENT" vertex="1">
+          <mxGeometry height="30" width="900" x="-1150" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="r_enter" parent="1" style="shape=parallelogram;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Enter Student Name&lt;br&gt;and Student Number" vertex="1">
+          <mxGeometry height="60" width="260" x="-810" y="1061" as="geometry" />
+        </mxCell>
+        <mxCell id="r_dec1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" value="Name and Number&lt;br&gt;Both Entered?" vertex="1">
+          <mxGeometry height="90" width="260" x="-810" y="1166" as="geometry" />
+        </mxCell>
+        <mxCell id="r_save" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Save Name and Number&lt;br&gt;Temporarily on Phone" vertex="1">
+          <mxGeometry height="60" width="260" x="-810" y="1301" as="geometry" />
+        </mxCell>
+        <mxCell id="r_conn" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Open Enrollment Screen&lt;br&gt;(connects to HC-05)" vertex="1">
+          <mxGeometry height="60" width="260" x="-810" y="1406" as="geometry" />
+        </mxCell>
+        <mxCell id="r_start" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Tap &#39;Start&#39;" vertex="1">
+          <mxGeometry height="60" width="260" x="-810" y="1511" as="geometry" />
+        </mxCell>
+        <mxCell id="r_dec2" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" value="Bluetooth Connected?" vertex="1">
+          <mxGeometry height="90" width="260" x="-810" y="1616" as="geometry" />
+        </mxCell>
+        <mxCell id="r_send" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Send &#39;REGISTER&#39; Command via Bluetooth&lt;br&gt;(Display &#39;Place your finger on the sensor&#39;)" vertex="1">
+          <mxGeometry height="64" width="260" x="-810" y="1751" as="geometry" />
+        </mxCell>
+        <mxCell id="r_id" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Find Next Free&lt;br&gt;Fingerprint ID (1-127)" vertex="1">
+          <mxGeometry height="60" width="260" x="-810" y="1860" as="geometry" />
+        </mxCell>
+        <mxCell id="r_dec3" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" value="ID Available?" vertex="1">
+          <mxGeometry height="90" width="260" x="-810" y="1965" as="geometry" />
+        </mxCell>
+        <mxCell id="r_scan1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Place Finger (1st Scan)&lt;br&gt;Capture and Convert Image" vertex="1">
+          <mxGeometry height="60" width="260" x="-810" y="2100" as="geometry" />
+        </mxCell>
+        <mxCell id="r_rem" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Remove Finger" vertex="1">
+          <mxGeometry height="60" width="260" x="-810" y="2205" as="geometry" />
+        </mxCell>
+        <mxCell id="r_scan2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Place Same Finger (2nd Scan)&lt;br&gt;Capture and Convert Image" vertex="1">
+          <mxGeometry height="60" width="260" x="-810" y="2310" as="geometry" />
+        </mxCell>
+        <mxCell id="r_dec4" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" value="Both Scans Captured&lt;br&gt;(within 15 seconds)?" vertex="1">
+          <mxGeometry height="90" width="260" x="-810" y="2415" as="geometry" />
+        </mxCell>
+        <mxCell id="r_model" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Create Fingerprint Model from&lt;br&gt;2 Scans and Store Template&lt;br&gt;in Sensor under the ID" vertex="1">
+          <mxGeometry height="70" width="260" x="-810" y="2550" as="geometry" />
+        </mxCell>
+        <mxCell id="r_dec5" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" value="Scans Match and&lt;br&gt;Template Stored?" vertex="1">
+          <mxGeometry height="90" width="260" x="-810" y="2665" as="geometry" />
+        </mxCell>
+        <mxCell id="r_ok" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Arduino Sends&lt;br&gt;&#39;REGISTERED|&amp;lt;ID&amp;gt;&#39; via Bluetooth" vertex="1">
+          <mxGeometry height="60" width="260" x="-810" y="2800" as="geometry" />
+        </mxCell>
+        <mxCell id="r_recv" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="App Receives&lt;br&gt;Fingerprint ID" vertex="1">
+          <mxGeometry height="60" width="260" x="-810" y="2905" as="geometry" />
+        </mxCell>
+        <mxCell id="r_fb" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" value="Save to Firebase: Registered/&amp;lt;ID&amp;gt;&lt;br&gt;(Name, StudentNumber, FingerprintID)" vertex="1">
+          <mxGeometry height="60" width="260" x="-810" y="3010" as="geometry" />
+        </mxCell>
+        <mxCell id="r_disp" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Display &#39;Registration Successful&#39;&lt;br&gt;(ID, Name, Student Number)" vertex="1">
+          <mxGeometry height="60" width="260" x="-810" y="3115" as="geometry" />
+        </mxCell>
+        <mxCell id="oVmyJr-1fL0OXAVBePDr-8" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="s_menu">
+          <mxGeometry relative="1" x="-0.017" as="geometry">
+            <Array as="points">
+              <mxPoint x="-1090" y="3245" />
+              <mxPoint x="-1090" y="700" />
+            </Array>
+            <mxPoint x="-780" y="3245" as="sourcePoint" />
+            <mxPoint x="-1040" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r_err1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="Display &#39;Please enter both the&lt;br&gt;student name and student number.&#39;" vertex="1">
+          <mxGeometry height="60" width="240" x="-380" y="1181" as="geometry" />
+        </mxCell>
+        <mxCell id="r_err2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="Display &#39;Bluetooth is not connected.&#39;" vertex="1">
+          <mxGeometry height="60" width="240" x="-380" y="1631" as="geometry" />
+        </mxCell>
+        <mxCell id="r_failApp" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="App Displays Error&lt;br&gt;(tap &#39;Start&#39; to try again)" vertex="1">
+          <mxGeometry height="60" width="260" x="-390" y="1860" as="geometry" />
+        </mxCell>
+        <mxCell id="r_fail" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Arduino Sends&lt;br&gt;&#39;REGISTER_FAILED&#39; via Bluetooth" vertex="1">
+          <mxGeometry height="60" width="260" x="-390" y="1980" as="geometry" />
+        </mxCell>
+        <mxCell id="t2" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=15;fontStyle=1;fontColor=#000000;" value="ATTENDANCE CHECKING (FINGERPRINT SCAN)" vertex="1">
+          <mxGeometry height="30" width="900" x="80" y="1020" as="geometry" />
+        </mxCell>
+        <mxCell id="a_tap" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Tap &#39;Scan&#39;" vertex="1">
+          <mxGeometry height="60" width="260" x="400" y="1246.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a_dec1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" value="Bluetooth Connected?" vertex="1">
+          <mxGeometry height="90" width="260" x="400" y="1351.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a_send" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Send &#39;SCAN&#39; Command via Bluetooth&lt;br&gt;(Display &#39;Place your finger on the sensor&#39;)" vertex="1">
+          <mxGeometry height="64" width="260" x="400" y="1486.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a_wait" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Student Places Finger&lt;br&gt;Capture and Convert Image&lt;br&gt;(waits up to 15 seconds)" vertex="1">
+          <mxGeometry height="70" width="260" x="400" y="1595.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a_search" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Search Fingerprint in&lt;br&gt;Sensor Database" vertex="1">
+          <mxGeometry height="60" width="260" x="400" y="1710.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a_dec2" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" value="Registered Fingerprint&lt;br&gt;Matched?" vertex="1">
+          <mxGeometry height="90" width="260" x="400" y="1815.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a_rtc" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Read Current Date and Time&lt;br&gt;from DS3231 RTC" vertex="1">
+          <mxGeometry height="60" width="260" x="400" y="1950.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a_sendBT" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Arduino Sends&lt;br&gt;&#39;MATCH|&amp;lt;ID&amp;gt;|&amp;lt;Date&amp;gt;|&amp;lt;Time&amp;gt;&#39;&lt;br&gt;via Bluetooth" vertex="1">
+          <mxGeometry height="70" width="260" x="400" y="2055.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a_recv" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="App Receives and Splits&lt;br&gt;ID, Date and Time" vertex="1">
+          <mxGeometry height="60" width="260" x="400" y="2170.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a_get" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" value="Get Student Name and Number&lt;br&gt;from Firebase: Registered/&amp;lt;ID&amp;gt;" vertex="1">
+          <mxGeometry height="60" width="260" x="400" y="2275.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a_create" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Create Attendance Record&lt;br&gt;(Status = Present)" vertex="1">
+          <mxGeometry height="60" width="260" x="400" y="2380.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a_save" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" value="Save to Firebase:&lt;br&gt;Attendance/&amp;lt;Date&amp;gt;_&amp;lt;ID&amp;gt;" vertex="1">
+          <mxGeometry height="60" width="260" x="400" y="2485.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a_disp" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Display &#39;Attendance Recorded&#39;&lt;br&gt;(Name, Number, Date, Time, Present)" vertex="1">
+          <mxGeometry height="60" width="260" x="400" y="2590.5" as="geometry" />
+        </mxCell>
+        <mxCell id="oVmyJr-1fL0OXAVBePDr-9" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="s_menu">
+          <mxGeometry relative="1" x="-0.3664" as="geometry">
+            <Array as="points">
+              <mxPoint x="2150" y="2717.5" />
+              <mxPoint x="2150" y="700" />
+            </Array>
+            <mxPoint x="610" y="2717.4999999999995" as="sourcePoint" />
+            <mxPoint x="2150" y="730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a_err1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="Display &#39;Bluetooth is not connected.&#39;" vertex="1">
+          <mxGeometry height="60" width="240" x="830" y="1366.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a_nm" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Arduino Sends &#39;NO_MATCH&#39;&lt;br&gt;via Bluetooth (also if no finger in 15 s)" vertex="1">
+          <mxGeometry height="60" width="260" x="820" y="1830.5" as="geometry" />
+        </mxCell>
+        <mxCell id="a_nmApp" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Display &#39;Fingerprint not recognized.&#39;&lt;br&gt;(tap &#39;Scan&#39; to try again)" vertex="1">
+          <mxGeometry height="60" width="260" x="820" y="1935.5" as="geometry" />
+        </mxCell>
+        <mxCell id="t3" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=15;fontStyle=1;fontColor=#000000;" value="ATTENDANCE REPORT GENERATION" vertex="1">
+          <mxGeometry height="30" width="900" x="1050" y="1027.5" as="geometry" />
+        </mxCell>
+        <mxCell id="p_date" parent="1" style="shape=parallelogram;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Select Date&lt;br&gt;(Date Picker)" vertex="1">
+          <mxGeometry height="60" width="260" x="1380" y="1278.5" as="geometry" />
+        </mxCell>
+        <mxCell id="p_load" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" value="Retrieve Records of the Selected&lt;br&gt;Date from Firebase: Attendance" vertex="1">
+          <mxGeometry height="60" width="260" x="1380" y="1383.5" as="geometry" />
+        </mxCell>
+        <mxCell id="p_show" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Display Records&lt;br&gt;(Date, Name, Student Number, Status, Time)" vertex="1">
+          <mxGeometry height="60" width="260" x="1380" y="1488.5" as="geometry" />
+        </mxCell>
+        <mxCell id="p_dec" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" value="Tap &#39;Export / Download CSV&#39;?" vertex="1">
+          <mxGeometry height="90" width="260" x="1380" y="1593.5" as="geometry" />
+        </mxCell>
+        <mxCell id="p_csv" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Generate CSV File&lt;br&gt;(Date, Name, Student Number, Status, Time)" vertex="1">
+          <mxGeometry height="60" width="260" x="1380" y="1728.5" as="geometry" />
+        </mxCell>
+        <mxCell id="p_file" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Save AttendanceReport.csv and Display&lt;br&gt;&#39;Attendance report exported successfully.&#39;" vertex="1">
+          <mxGeometry height="64" width="260" x="1380" y="1833.5" as="geometry" />
+        </mxCell>
+        <mxCell id="oVmyJr-1fL0OXAVBePDr-10" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" target="s_menu">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2080" y="1967.5" />
+              <mxPoint x="2080" y="715" />
+            </Array>
+            <mxPoint x="1610" y="1967.5" as="sourcePoint" />
+            <mxPoint x="2060" y="760" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oVmyJr-1fL0OXAVBePDr-11" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=1;entryDx=0;entryDy=0;" target="s_menu">
+          <mxGeometry relative="1" x="0.0346" as="geometry">
+            <Array as="points">
+              <mxPoint x="1930" y="730" />
+            </Array>
+            <mxPoint x="1930" y="1613.5" as="sourcePoint" />
+            <mxPoint x="1930" y="710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed0" edge="1" parent="1" source="s_start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="s_open" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed1" edge="1" parent="1" source="s_open" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="s_pick" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed2" edge="1" parent="1" source="s_pick" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="s_dec" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed3" edge="1" parent="1" source="s_dec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#b85450;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="s_err" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed4" edge="1" parent="1" source="s_err" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" target="s_pick" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1130" y="475" />
+              <mxPoint x="1130" y="355" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed5" edge="1" parent="1" source="s_dec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#2b6b2b;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="s_save" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed6" edge="1" parent="1" source="s_save" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="s_menu" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed7" edge="1" parent="1" source="s_menu" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="s_c1" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="765" />
+              <mxPoint x="230" y="765" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed8" edge="1" parent="1" source="s_menu" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="s_c2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed9" edge="1" parent="1" source="s_menu" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="s_c3" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="765" />
+              <mxPoint x="830" y="765" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed10" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_enter" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-680" y="1016" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed11" edge="1" parent="1" source="r_enter" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_dec1" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed12" edge="1" parent="1" source="r_dec1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#2b6b2b;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_save" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed13" edge="1" parent="1" source="r_save" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_conn" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed14" edge="1" parent="1" source="r_conn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_start" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed15" edge="1" parent="1" source="r_start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_dec2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed16" edge="1" parent="1" source="r_dec2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#2b6b2b;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_send" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed17" edge="1" parent="1" source="r_send" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_id" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed18" edge="1" parent="1" source="r_id" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_dec3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed19" edge="1" parent="1" source="r_dec3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#2b6b2b;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_scan1" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed20" edge="1" parent="1" source="r_scan1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_rem" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed21" edge="1" parent="1" source="r_rem" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_scan2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed22" edge="1" parent="1" source="r_scan2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_dec4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed23" edge="1" parent="1" source="r_dec4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#2b6b2b;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_model" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed24" edge="1" parent="1" source="r_model" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_dec5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed25" edge="1" parent="1" source="r_dec5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#2b6b2b;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_ok" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed26" edge="1" parent="1" source="r_ok" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_recv" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed27" edge="1" parent="1" source="r_recv" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_fb" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed28" edge="1" parent="1" source="r_fb" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="r_disp" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed29" edge="1" parent="1" source="r_disp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-680" y="3220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed30" edge="1" parent="1" source="r_dec1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#b85450;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="r_err1" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed31" edge="1" parent="1" source="r_err1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" target="r_enter" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-80" y="1211" />
+              <mxPoint x="-80" y="1091" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed32" edge="1" parent="1" source="r_dec2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#b85450;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="r_err2" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed33" edge="1" parent="1" source="r_err2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" target="r_start" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-80" y="1661" />
+              <mxPoint x="-80" y="1541" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed34" edge="1" parent="1" source="r_dec3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#b85450;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="r_fail" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed35" edge="1" parent="1" source="r_dec4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#b85450;exitX=1;exitY=0.5;entryX=0.5;entryY=1;" target="r_fail" value="No">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-260" y="2460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed36" edge="1" parent="1" source="r_dec5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#b85450;exitX=1;exitY=0.5;entryX=0.5;entryY=1;" target="r_fail" value="No">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-260" y="2710" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed37" edge="1" parent="1" source="r_fail" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" target="r_failApp" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed38" edge="1" parent="1" source="r_failApp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" target="r_start" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-20" y="1890" />
+              <mxPoint x="-20" y="1541" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed39" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="a_tap" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="1173" as="sourcePoint" />
+            <mxPoint x="530" y="1141.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed41" edge="1" parent="1" source="a_tap" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="a_dec1" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed42" edge="1" parent="1" source="a_dec1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#2b6b2b;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="a_send" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed43" edge="1" parent="1" source="a_send" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="a_wait" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed44" edge="1" parent="1" source="a_wait" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="a_search" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed45" edge="1" parent="1" source="a_search" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="a_dec2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed46" edge="1" parent="1" source="a_dec2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#2b6b2b;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="a_rtc" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed47" edge="1" parent="1" source="a_rtc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="a_sendBT" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed48" edge="1" parent="1" source="a_sendBT" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="a_recv" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed49" edge="1" parent="1" source="a_recv" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="a_get" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed50" edge="1" parent="1" source="a_get" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="a_create" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed51" edge="1" parent="1" source="a_create" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="a_save" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed52" edge="1" parent="1" source="a_save" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="a_disp" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed53" edge="1" parent="1" source="a_disp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="2695.4999999999995" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed54" edge="1" parent="1" source="a_dec1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#b85450;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="a_err1" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed55" edge="1" parent="1" source="a_err1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" target="a_tap" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1130" y="1396.5" />
+              <mxPoint x="1130" y="1276.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed56" edge="1" parent="1" source="a_dec2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#b85450;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="a_nm" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed57" edge="1" parent="1" source="a_nm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="a_nmApp" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed58" edge="1" parent="1" source="a_nmApp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=1;exitY=0.5;entryX=1;entryY=0.5;" target="a_tap" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1190" y="1965.5" />
+              <mxPoint x="1190" y="1276.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed59" edge="1" parent="1" source="oVmyJr-1fL0OXAVBePDr-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitDx=0;exitDy=0;" target="p_date" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1510" y="1128.5" as="sourcePoint" />
+            <mxPoint x="1510" y="1173.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed61" edge="1" parent="1" source="p_date" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="p_load" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed62" edge="1" parent="1" source="p_load" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="p_show" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed63" edge="1" parent="1" source="p_show" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="p_dec" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed64" edge="1" parent="1" source="p_dec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#2b6b2b;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="p_csv" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed65" edge="1" parent="1" source="p_csv" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="p_file" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ed66" edge="1" parent="1" source="p_file" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1510" y="1942.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed67" edge="1" parent="1" source="p_dec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;fontColor=#b85450;exitX=1;exitY=0.5;" value="No">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1820" y="1638.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oVmyJr-1fL0OXAVBePDr-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="&lt;span style=&quot;font-size: 13px; font-weight: 700;&quot;&gt;Open Student Registration&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="260" x="-810" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="oVmyJr-1fL0OXAVBePDr-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;b&gt;Open attendance Screen&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="260" x="400" y="1109" as="geometry" />
+        </mxCell>
+        <mxCell id="oVmyJr-1fL0OXAVBePDr-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="&lt;span style=&quot;font-size: 13px;&quot;&gt;&lt;b&gt;Open attendance Screen&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="260" x="1380" y="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="oVmyJr-1fL0OXAVBePDr-13" parent="1" style="shape=parallelogram;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Back to Main Menu (Button)" vertex="1">
+          <mxGeometry height="60" width="260" x="-790" y="3205" as="geometry" />
+        </mxCell>
+        <mxCell id="oVmyJr-1fL0OXAVBePDr-15" parent="1" style="shape=parallelogram;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Back to Main Menu (Button)" vertex="1">
+          <mxGeometry height="60" width="260" x="400" y="2695" as="geometry" />
+        </mxCell>
+        <mxCell id="oVmyJr-1fL0OXAVBePDr-16" parent="1" style="shape=parallelogram;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Back to Main Menu (Button)" vertex="1">
+          <mxGeometry height="60" width="260" x="1370" y="1943" as="geometry" />
+        </mxCell>
+        <mxCell id="oVmyJr-1fL0OXAVBePDr-17" parent="1" style="shape=parallelogram;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Back to Main Menu (Button)" vertex="1">
+          <mxGeometry height="60" width="260" x="1810" y="1610" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
