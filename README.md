@@ -36,11 +36,10 @@ README.md
 
 | Part | Purpose |
 |---|---|
-| Arduino Uno / Nano (ATmega328 class) | Main controller |
+| Arduino Uno | Main controller |
 | AS608 fingerprint sensor | Enroll and match fingerprints |
 | HC-05 Bluetooth module | Link to the phone |
 | DS3231 RTC module | Date and time for each scan |
-| 2 resistors (voltage divider) | Step the Arduino TX signal down to 3.3 V for the HC-05 RX |
 | Android phone | Runs the app |
 
 ### Wiring
