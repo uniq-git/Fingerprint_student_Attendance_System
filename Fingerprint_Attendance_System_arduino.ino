@@ -3,6 +3,8 @@
 #include <Wire.h>
 #include <RTClib.h>
 
+// ->  To run this you must install the library adafruit, rtclib in Library Manager <-
+
 // ======================================================
 // Protocol used by the MIT App Inventor app (unchanged)
 //   App -> Arduino : "REGISTER\n"  |  "SCAN\n"
