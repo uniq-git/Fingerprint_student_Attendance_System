@@ -4,7 +4,6 @@
 #include <RTClib.h>
 
 // ->  To run this you must install the library adafruit, rtclib in Library Manager <-
-
 // ======================================================
 // Protocol used by the MIT App Inventor app
 //   App -> Arduino : "REGISTER\n"  |  "SCAN\n"
@@ -15,12 +14,14 @@
 //                    "REGISTER_FAILED\n"
 //                    "CLEARED\n" | "CLEAR_FAILED\n"
 //                    "DELETED|<id>\n" | "DELETE_FAILED\n"
+//                    "STATUS|<text>\n"  -> progress hint shown in the app
+//                    "ERROR|<text>\n"   -> problem shown in the app
 // ONLY these lines go over Bluetooth.
-// ALL status / error messages go to the USB Serial Monitor (9600).
+// Other diagnostic messages go to the USB Serial Monitor (9600).
 //
 // USB Serial Monitor commands (set line ending to "Newline"):
 //   CLEAR        -> erase ALL fingerprints stored in the sensor
-//   DELETE 1     -> erase fingerprint ID 1  only
+//   DELETE 3     -> erase fingerprint ID 3 only
 // ======================================================
 
 // AS608: sensor TX -> D2, sensor RX -> D3
@@ -46,6 +47,21 @@ void logError(const __FlashStringHelper *where, uint8_t code)
   Serial.print(where);
   Serial.print(F(" -> code 0x"));
   Serial.println(code, HEX);
+}
+
+// ---------- app indicators (USB Serial Monitor + Bluetooth) ----------
+void sendStatus(const __FlashStringHelper *msg)
+{
+  Serial.println(msg);
+  bluetooth.print(F("STATUS|"));
+  bluetooth.println(msg);
+}
+
+void sendError(const __FlashStringHelper *msg)
+{
+  Serial.println(msg);
+  bluetooth.print(F("ERROR|"));
+  bluetooth.println(msg);
 }
 
 // ---------- sensor connection ----------
@@ -323,7 +339,7 @@ bool waitForImage()
     delay(100);
   }
 
-  Serial.println(F("TIMEOUT: no finger detected"));
+  sendError(F("Timeout: no finger detected"));
   return false;
 }
 
@@ -338,12 +354,12 @@ bool captureToBuffer(uint8_t slot)
     if (p == FINGERPRINT_OK) return true;
 
     logError(F("image2Tz (bad image)"), p);
-    Serial.println(F("Press the finger FLAT and firm on the glass, then try again"));
+    sendStatus(F("Press your finger flat and firm, then try again"));
 
     unsigned long s = millis();                // wait for the finger to be lifted
     while (finger.getImage() != FINGERPRINT_NOFINGER && millis() - s < 5000) delay(100);
     delay(500);
-    Serial.println(F("PLACE_FINGER"));
+    sendStatus(F("Place your finger on the sensor"));
   }
   return false;
 }
@@ -353,10 +369,10 @@ bool enrollFingerprint(uint8_t id)
   uint8_t p;
 
   // ---- first scan ----
-  Serial.println(F("PLACE_FINGER"));
+  sendStatus(F("Place your finger on the sensor"));
   if (!captureToBuffer(1)) return false;
 
-  Serial.println(F("REMOVE_FINGER"));
+  sendStatus(F("Remove your finger"));
   delay(2000);
 
   unsigned long start = millis();
@@ -364,28 +380,28 @@ bool enrollFingerprint(uint8_t id)
   {
     if (millis() - start > SCAN_TIMEOUT_MS)
     {
-      Serial.println(F("TIMEOUT: finger not removed"));
+      sendError(F("Timeout: finger not removed"));
       return false;
     }
     delay(100);
   }
 
   // ---- second scan ----
-  Serial.println(F("PLACE_SAME_FINGER"));
+  sendStatus(F("Place the SAME finger again"));
   if (!captureToBuffer(2)) return false;
 
   p = finger.createModel();
   if (p != FINGERPRINT_OK)
   {
-    Serial.println(F("FINGERPRINT_NOT_MATCHED: the two scans differ, try again"));
+    sendError(F("The two scans did not match, try again"));
     logError(F("createModel"), p);
     return false;
   }
 
   p = finger.storeModel(id);
-  if (p != FINGERPRINT_OK) { logError(F("storeModel (SAVE_FAILED)"), p); return false; }
+  if (p != FINGERPRINT_OK) { logError(F("storeModel (SAVE_FAILED)"), p); sendError(F("Could not save fingerprint, try again")); return false; }
 
-  Serial.println(F("FINGERPRINT_SAVED"));
+  sendStatus(F("Fingerprint saved"));
   return true;
 }
 
