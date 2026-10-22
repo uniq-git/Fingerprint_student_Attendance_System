@@ -59,21 +59,12 @@ The current project files are stored in the root directory of this repository.
 Fingerprint_student_Attendance_System/
 ├── Fingerprint_Attendance_System_arduino.ino
 ├── Fingerprint_Attendance_System_1.aia
-├── DFD_Level0.drawio
-├── DFD_Level1.drawio
-├── ERD.drawio
-├── Database_Schema.drawio
-├── Fingerprint_attendance_system(flowchart).drawio
-├── README.md
-└── docs/
-    └── adr/
-        ├── ADR-001-fingerprint-processing-on-arduino.md
-        ├── ADR-002-bluetooth-serial-communication.md
-        ├── ADR-003-firebase-realtime-database.md
-        └── ADR-004-ds3231-real-time-clock.md
+├── Diagram.zip        (DFD Level 0/1, ERD, database schema, flowchart)
+├── SIA1_ADR.zip       (Architecture Decision Records)
+└── README.md
 ```
 
-The `docs/adr/` files must be uploaded before the ADR links in this README will work.
+Unzip `Diagram.zip` and open the `.drawio` files with [diagrams.net](https://app.diagrams.net). Unzip `SIA1_ADR.zip` to read the ADRs.
 
 ## 3. Hardware Requirements
 
@@ -257,14 +248,12 @@ Open the `.drawio` files using [diagrams.net](https://app.diagrams.net).
 
 ### 8.1 Architecture Decision Records (ADRs)
 
-The ADRs document the main design decisions made for the system.
+The ADRs are in `SIA1_ADR.zip`. They cover:
 
-Once uploaded, the files should be available at these paths:
-
-- [ADR-001: Fingerprint Processing on Arduino](docs/adr/ADR-001-fingerprint-processing-on-arduino.md)
-- [ADR-002: Bluetooth Serial Communication](docs/adr/ADR-002-bluetooth-serial-communication.md)
-- [ADR-003: Firebase Realtime Database](docs/adr/ADR-003-firebase-realtime-database.md)
-- [ADR-004: DS3231 Real-Time Clock](docs/adr/ADR-004-ds3231-real-time-clock.md)
+- Fingerprint processing on the Arduino
+- Bluetooth serial communication
+- Firebase Realtime Database
+- DS3231 real-time clock
 
 Each ADR should reflect the actual implementation and decisions confirmed by the group.
 
