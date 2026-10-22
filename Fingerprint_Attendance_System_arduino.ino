@@ -6,14 +6,21 @@
 // ->  To run this you must install the library adafruit, rtclib in Library Manager <-
 
 // ======================================================
-// Protocol used by the MIT App Inventor app (unchanged)
+// Protocol used by the MIT App Inventor app
 //   App -> Arduino : "REGISTER\n"  |  "SCAN\n"
+//                    "CLEARALL\n"  |  "DELETE|<id>\n"
 //   Arduino -> App : "REGISTERED|<id>\n"
 //                    "MATCH|<id>|<yyyy-MM-dd>|<HH:mm:ss>\n"
 //                    "NO_MATCH\n"
 //                    "REGISTER_FAILED\n"
+//                    "CLEARED\n" | "CLEAR_FAILED\n"
+//                    "DELETED|<id>\n" | "DELETE_FAILED\n"
 // ONLY these lines go over Bluetooth.
 // ALL status / error messages go to the USB Serial Monitor (9600).
+//
+// USB Serial Monitor commands (set line ending to "Newline"):
+//   CLEAR        -> erase ALL fingerprints stored in the sensor
+//   DELETE 1     -> erase fingerprint ID 1  only
 // ======================================================
 
 // AS608: sensor TX -> D2, sensor RX -> D3
@@ -83,10 +90,18 @@ void setup()
 
   bluetooth.listen();
   Serial.println(F("SYSTEM_READY"));
+  Serial.println(F("USB commands: CLEAR  |  DELETE <id>"));
 }
 
 void loop()
 {
+  // ---------- USB Serial Monitor commands ----------
+  if (Serial.available())
+  {
+    handleUsbCommand();
+  }
+
+  // ---------- Bluetooth commands from the app ----------
   if (bluetooth.available())
   {
     String command = bluetooth.readStringUntil('\n');
@@ -121,12 +136,104 @@ void loop()
       }
       bluetooth.listen();
     }
+    else if (command == "CLEARALL")
+    {
+      Serial.println(F("Command: CLEARALL"));
+      if (clearSensor()) sendLine(F("CLEARED"));
+      else sendLine(F("CLEAR_FAILED"));
+    }
+    else if (command.startsWith("DELETE|"))
+    {
+      int id = command.substring(7).toInt();
+      Serial.print(F("Command: DELETE "));
+      Serial.println(id);
+      if (deleteFingerprint(id))
+      {
+        bluetooth.print(F("DELETED|"));
+        bluetooth.println(id);
+      }
+      else
+      {
+        sendLine(F("DELETE_FAILED"));
+      }
+    }
     else if (command.length() > 0)
     {
       Serial.print(F("Unknown command: "));
       Serial.println(command);
     }
   }
+}
+
+// ======================================================
+// USB Serial Monitor commands
+// ======================================================
+void handleUsbCommand()
+{
+  String cmd = Serial.readStringUntil('\n');
+  cmd.trim();
+  cmd.toUpperCase();
+
+  if (cmd == "CLEAR")
+  {
+    clearSensor();
+  }
+  else if (cmd.startsWith("DELETE "))
+  {
+    deleteFingerprint(cmd.substring(7).toInt());
+  }
+  else if (cmd.length() > 0)
+  {
+    Serial.println(F("Unknown. Use:  CLEAR   or   DELETE <id>"));
+  }
+}
+
+// ======================================================
+// Delete helpers
+// ======================================================
+
+// Erases EVERY fingerprint stored in the sensor
+bool clearSensor()
+{
+  if (!(sensorReady || connectSensor())) return false;
+
+  fingerSerial.listen();
+  uint8_t p = finger.emptyDatabase();
+  bluetooth.listen();
+
+  if (p == FINGERPRINT_OK)
+  {
+    Serial.println(F("SENSOR_CLEARED: all fingerprints erased"));
+    return true;
+  }
+
+  logError(F("emptyDatabase"), p);
+  return false;
+}
+
+// Erases one fingerprint (id 1..127)
+bool deleteFingerprint(int id)
+{
+  if (id < 1 || id > 127)
+  {
+    Serial.println(F("DELETE_FAILED: id must be 1 to 127"));
+    return false;
+  }
+  if (!(sensorReady || connectSensor())) return false;
+
+  fingerSerial.listen();
+  uint8_t p = finger.deleteModel(id);
+  bluetooth.listen();
+
+  if (p == FINGERPRINT_OK)
+  {
+    Serial.print(F("DELETED fingerprint ID "));
+    Serial.println(id);
+    return true;
+  }
+
+  logError(F("deleteModel"), p);
+  return false;
 }
 
 // ======================================================
