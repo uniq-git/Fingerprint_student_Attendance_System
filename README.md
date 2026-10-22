@@ -5,7 +5,8 @@ A fingerprint-based attendance system for students using an Arduino Uno, AS608 f
 The teacher operates the Android application to register students, manage attendance scanning, view attendance records, and export reports. Students use their fingerprints on the sensor to record their attendance. Each student can be recorded once per day.
 
 **Course:** BSIT
-**Group/Section:** Group 2
+
+**Group/Section:** Group 2 - OLCA311N072
 
 ---
 
