@@ -27,11 +27,11 @@ HC-05 Bluetooth Module ────┘       │ Bluetooth Serial
                          Firebase Realtime Database
 ```
 
-| Tier | Description | Location |
-|---|---|---|
-| Edge | Arduino Uno, AS608 fingerprint sensor, HC-05 Bluetooth module, and DS3231 RTC | Arduino sketch in the repository root |
-| Gateway / Frontend | Android app operated by the teacher | `.aia` project file in the repository root |
-| Cloud | Firebase Realtime Database | Google Firebase |
+| Tier               | Description                                                                   | Location                                    |
+|--------------------|-------------------------------------------------------------------------------|---------------------------------------------|
+| Edge               | Arduino Uno, AS608 fingerprint sensor, HC-05 Bluetooth module, and DS3231 RTC | `Fingerprint_Attendance_System_arduino.ino` |
+| Gateway / Frontend | Android app operated by the teacher                                           | `Fingerprint_Attendance_System_1.aia`       |
+| Cloud              | Firebase Realtime Database                                                    | Google Firebase                             |
 
 There is no separate backend server in the current implementation. The Android app communicates with the Arduino through Bluetooth and connects to Firebase to store and retrieve student and attendance data.
 
@@ -57,12 +57,15 @@ The current project files are stored in the root directory of this repository.
 
 ```text
 Fingerprint_student_Attendance_System/
-├── Fingerprint_Attendance_System_arduino.ino
-├── Fingerprint_Attendance_System_1.aia
-├── Diagram.zip        (DFD Level 0/1, ERD, database schema, flowchart)
-├── SIA1_ADR.zip       (Architecture Decision Records)
+├── Fingerprint_Attendance_System_arduino.ino   # Arduino sketch (edge tier)
+├── Fingerprint_Attendance_System_1.aia         # MIT App Inventor project (Android app source)
+├── Fingerprint_Attendance_System_1.apk         # Built Android app, ready to install
+├── Diagram.zip                                 # System diagrams (see section 8.1)
+├── SIA1_ADR.zip                                # Architecture Decision Records (see section 8.2)
 └── README.md
 ```
+
+The diagrams and ADRs are stored as zip archives. Download and extract them to view their contents.
 
 Unzip `Diagram.zip` and open the `.drawio` files with [diagrams.net](https://app.diagrams.net). Unzip `SIA1_ADR.zip` to read the ADRs.
 
@@ -84,7 +87,7 @@ Unzip `Diagram.zip` and open the `.drawio` files with [diagrams.net](https://app
 | AS608 RX | D3 | Arduino sends commands to the sensor |
 | AS608 VCC / GND | According to module specifications / GND | Check the sensor's rated voltage |
 | HC-05 TX | D10 | Arduino receives Bluetooth serial data |
-| HC-05 RX | D11 | Use an appropriate voltage divider if required |
+| HC-05 RX | D11 | The HC-05 RX pin is 3.3 V logic; use a voltage divider on this line   |
 | HC-05 VCC / GND | According to module specifications / GND | Check the module's power requirements |
 | DS3231 SDA | A4 | I²C data |
 | DS3231 SCL | A5 | I²C clock |
@@ -125,6 +128,8 @@ Troubleshooting:
 Only the documented protocol messages are intended for communication between the app and Arduino over Bluetooth. Other diagnostic messages may appear in the USB Serial Monitor.
 
 ### 4.2 Gateway: Android App
+
+**Quick install:** download `Fingerprint_Attendance_System_1.apk` from the repository root, copy it to the Android phone, and install it (you may need to allow installs from unknown sources). The steps below are for editing or rebuilding the app from the `.aia` source.
 
 1. Open [MIT App Inventor](https://appinventor.mit.edu).
 2. Select **Projects → Import project (.aia)**.
@@ -202,18 +207,18 @@ The Arduino and app exchange plain-text messages over Bluetooth serial communica
 
 The protocol uses a baud rate of **9600** in the documented implementation.
 
-| Direction | Message | Meaning |
-|---|---|---|
-| App → Arduino | `REGISTER` | Requests fingerprint registration |
-| App → Arduino | `SCAN` | Requests fingerprint matching |
-| App → Arduino | `CLEARALL` | Requests erasing all fingerprints from the sensor |
-| App → Arduino | `DELETE\|<id>` | Requests erasing one fingerprint from the sensor |
-| Arduino → App | `REGISTERED\|<id>` | Registration succeeded; `<id>` is the assigned fingerprint ID |
-| Arduino → App | `REGISTER_FAILED` | Registration failed or timed out |
-| Arduino → App | `MATCH\|<id>\|<yyyy-MM-dd>\|<HH:mm:ss>` | Fingerprint matched, with date and time |
-| Arduino → App | `NO_MATCH` | No matching fingerprint was found or no finger was detected within the timeout |
-| Arduino → App | `CLEARED` / `CLEAR_FAILED` | Result of `CLEARALL` |
-| Arduino → App | `DELETED\|<id>` / `DELETE_FAILED` | Result of `DELETE\|<id>` |
+| Direction     | Message                                 | Meaning                                                                        |
+|---------------|-----------------------------------------|--------------------------------------------------------------------------------|
+| App → Arduino | `REGISTER`                              | Requests fingerprint registration                                              |
+| App → Arduino | `SCAN`                                  | Requests fingerprint matching                                                  |
+| App → Arduino | `CLEARALL`                              | Requests erasing all fingerprints from the sensor                              |
+| App → Arduino | `DELETE\|<id>`                          | Requests erasing one fingerprint from the sensor                               |
+| Arduino → App | `REGISTERED\|<id>`                      | Registration succeeded; `<id>` is the assigned fingerprint ID                  |
+| Arduino → App | `REGISTER_FAILED`                       | Registration failed or timed out                                               |
+| Arduino → App | `MATCH\|<id>\|<yyyy-MM-dd>\|<HH:mm:ss>` | Fingerprint matched, with date and time                                        |
+| Arduino → App | `NO_MATCH`                              | No matching fingerprint was found or no finger was detected within the timeout |
+| Arduino → App | `CLEARED` / `CLEAR_FAILED`              | Result of `CLEARALL`                                                           |
+| Arduino → App | `DELETED\|<id>` / `DELETE_FAILED`       | Result of `DELETE\|<id>`                                                       |
 
 The Arduino and Android app must use the same command names and message format. The current app sends only `REGISTER` and `SCAN`. `CLEARALL` and `DELETE|<id>` are supported by the Arduino for future use, and the same actions are available today through the USB Serial Monitor (section 4.1).
 
@@ -236,26 +241,30 @@ The record key combines the date and fingerprint ID (for example `2026-10-22_4`)
 
 ## 8. Documentation
 
-The repository includes the following system diagrams:
+The system diagrams and Architecture Decision Records (ADRs) are stored as zip files in the repository root. Download and extract them to view the contents.
 
-- `DFD_Level0.drawio` — Level 0 Data Flow Diagram
-- `DFD_Level1.drawio` — Level 1 Data Flow Diagram
-- `ERD.drawio` — Entity Relationship Diagram
-- `Database_Schema.drawio` — Database schema diagram
-- `Fingerprint_attendance_system(flowchart).drawio` — System flowchart
+### 8.1 System Diagrams
 
-Open the `.drawio` files using [diagrams.net](https://app.diagrams.net).
+`Diagram.zip` contains the system diagrams, which are `.drawio` files:
 
-### 8.1 Architecture Decision Records (ADRs)
+- Level 0 Data Flow Diagram
+- Level 1 Data Flow Diagram
+- Entity Relationship Diagram (ERD)
+- Database schema diagram
+- System flowchart
 
-The ADRs are in `SIA1_ADR.zip`. They cover:
+Extract the archive, then open the `.drawio` files using [diagrams.net](https://app.diagrams.net).
 
-- Fingerprint processing on the Arduino
-- Bluetooth serial communication
-- Firebase Realtime Database
-- DS3231 real-time clock
+### 8.2 Architecture Decision Records (ADRs)
 
-Each ADR should reflect the actual implementation and decisions confirmed by the group.
+`SIA1_ADR.zip` contains the ADRs documenting the main design decisions of the system:
+
+- ADR-001: Fingerprint Processing on Arduino
+- ADR-002: Bluetooth Serial Communication
+- ADR-003: Firebase Realtime Database
+- ADR-004: DS3231 Real-Time Clock
+
+Each ADR reflects the implementation and decisions confirmed by the group.
 
 ## 9. Known Limitations
 
