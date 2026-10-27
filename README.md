@@ -1,6 +1,6 @@
 # Fingerprint Student Attendance System
 
-A fingerprint-based attendance system for students using an Arduino Uno, AS608 fingerprint sensor, HC-05 Bluetooth module, DS3231 Real-Time Clock (RTC), MIT App Inventor Android application, and Firebase Realtime Database.
+A fingerprint-based student attendance system using an Arduino Uno, AS608 fingerprint sensor, HC-05 Bluetooth module, DS3231 Real-Time Clock (RTC), MIT App Inventor Android application, and Firebase Realtime Database. The Android app includes a Login screen for the app operator.
 
 The teacher operates the Android application to register students, manage attendance scanning, view attendance records, and export reports. Students use their fingerprints on the sensor to record their attendance. Each student can be recorded once per day.
 
@@ -27,29 +27,29 @@ HC-05 Bluetooth Module ────┘       │ Bluetooth Serial
                          Firebase Realtime Database
 ```
 
-| Tier               | Description                                                                   | Location                                    |
-|--------------------|-------------------------------------------------------------------------------|---------------------------------------------|
-| Edge               | Arduino Uno, AS608 fingerprint sensor, HC-05 Bluetooth module, and DS3231 RTC | `Fingerprint_Attendance_System_arduino.ino` |
-| Gateway / Frontend | Android app operated by the teacher                                           | `Fingerprint_Attendance_System_1.aia`       |
-| Cloud              | Firebase Realtime Database                                                    | Google Firebase                             |
+| Tier | Description | Location |
+|---|---|---|
+| Edge | Arduino Uno, AS608 fingerprint sensor, HC-05 Bluetooth module, and DS3231 RTC | `Fingerprint_Attendance_System_arduino.ino` |
+| Gateway / Frontend | Android app operated by the teacher | `Fingerprint_Attendance_System_1.aia` |
+| Cloud | Firebase Realtime Database | Google Firebase |
 
 There is no separate backend server in the current implementation. The Android app communicates with the Arduino through Bluetooth and connects to Firebase to store and retrieve student and attendance data.
 
 ### 1.1 User Roles
 
 **Teacher**
-- Operates the Android application.
+- Opens the Android application and uses the Login screen to access the main menu.
 - Registers student information and fingerprints.
 - Starts fingerprint attendance scanning.
 - Views attendance records.
 - Exports attendance reports as CSV files.
-- Maintains the system when a student is removed (see section 5.4).
+- Maintains the system when a student is removed (see Section 5.4).
 
 **Students**
 - Use their fingerprints on the AS608 sensor to record attendance.
-- Do not need individual accounts or a login screen in the Android application.
+- Do not need individual accounts or log in to the Android application.
 
-The fingerprint sensor identifies registered students. It does not authenticate the teacher.
+The Login screen is for the app operator, not for students. The fingerprint sensor identifies registered students; it does not authenticate the teacher.
 
 ## 2. Repository Layout
 
@@ -57,17 +57,21 @@ The current project files are stored in the root directory of this repository.
 
 ```text
 Fingerprint_student_Attendance_System/
-├── Fingerprint_Attendance_System_arduino.ino   # Arduino sketch (edge tier)
-├── Fingerprint_Attendance_System_1.aia         # MIT App Inventor project (Android app source)
-├── Fingerprint_Attendance_System_1.apk         # Built Android app, ready to install
-├── Diagram.zip                                 # System diagrams (see section 8.1)
-├── SIA1_ADR.zip                                # Architecture Decision Records (see section 8.2)
+├── Fingerprint_Attendance_System_arduino.ino
+├── Fingerprint_Attendance_System_1.aia
+├── Fingerprint_Attendance_System.apk
+├── Diagram/
+├── SIA1_ADR/
 └── README.md
 ```
 
-The diagrams and ADRs are stored as zip archives. Download and extract them to view their contents.
+- `Fingerprint_Attendance_System_arduino.ino` — Arduino sketch.
+- `Fingerprint_Attendance_System_1.aia` — MIT App Inventor project source.
+- `Fingerprint_Attendance_System.apk` — Built Android application.
+- `Diagram/` — System diagrams.
+- `SIA1_ADR/` — Architecture Decision Records.
 
-Unzip `Diagram.zip` and open the `.drawio` files with [diagrams.net](https://app.diagrams.net). Unzip `SIA1_ADR.zip` to read the ADRs.
+Open the `.drawio` files in the `Diagram/` folder using [diagrams.net](https://app.diagrams.net). The ADR documents are available in the `SIA1_ADR/` folder.
 
 ## 3. Hardware Requirements
 
@@ -87,7 +91,7 @@ Unzip `Diagram.zip` and open the `.drawio` files with [diagrams.net](https://app
 | AS608 RX | D3 | Arduino sends commands to the sensor |
 | AS608 VCC / GND | According to module specifications / GND | Check the sensor's rated voltage |
 | HC-05 TX | D10 | Arduino receives Bluetooth serial data |
-| HC-05 RX | D11 | The HC-05 RX pin is 3.3 V logic; use a voltage divider on this line   |
+| HC-05 RX | D11 | The HC-05 RX pin uses 3.3 V logic; use a voltage divider on this line |
 | HC-05 VCC / GND | According to module specifications / GND | Check the module's power requirements |
 | DS3231 SDA | A4 | I²C data |
 | DS3231 SCL | A5 | I²C clock |
@@ -113,23 +117,22 @@ All modules must share a common ground.
 
 | Command | Effect |
 |---|---|
-| `CLEAR` | Erases **all** fingerprints stored in the sensor |
+| `CLEAR` | Erases all fingerprints stored in the sensor |
 | `DELETE <id>` | Erases only the fingerprint with that ID (1 to 127), for example `DELETE 3` |
 
 The Arduino confirms with `SENSOR_CLEARED` or `DELETED fingerprint ID <id>`.
 
-Troubleshooting:
-
+**Troubleshooting**
 - If `FINGERPRINT_ERROR` appears, check the sensor wiring, power supply, and sensor baud rate.
 - If the RTC reports that it lost power, check the DS3231 battery and verify its date and time.
 - If Bluetooth does not connect, check the pairing status, wiring, and serial communication settings.
-- If scans keep matching a fingerprint ID that no longer exists in Firebase, clear that fingerprint from the sensor (see section 5.4).
+- If scans keep matching a fingerprint ID that no longer exists in Firebase, clear that fingerprint from the sensor (see Section 5.4).
 
 Only the documented protocol messages are intended for communication between the app and Arduino over Bluetooth. Other diagnostic messages may appear in the USB Serial Monitor.
 
 ### 4.2 Gateway: Android App
 
-**Quick install:** download `Fingerprint_Attendance_System_1.apk` from the repository root, copy it to the Android phone, and install it (you may need to allow installs from unknown sources). The steps below are for editing or rebuilding the app from the `.aia` source.
+**Quick install:** Download `Fingerprint_Attendance_System.apk` from the repository root, copy it to the Android phone, and install it. Android may ask you to approve the installation. The steps below are for editing or rebuilding the app from the `.aia` source.
 
 1. Open [MIT App Inventor](https://appinventor.mit.edu).
 2. Select **Projects → Import project (.aia)**.
@@ -139,7 +142,7 @@ Only the documented protocol messages are intended for communication between the
 6. Install the app on the Android phone and grant the necessary permissions.
 7. Pair and connect the app to the HC-05 module.
 
-The app is designed for the teacher to operate. Students use the fingerprint sensor and do not need to sign in to the Android application.
+The app is designed for the teacher or app operator. The Login screen checks the configured username and password before opening the main menu. Students use the fingerprint sensor and do not need to sign in to the Android application.
 
 ### 4.3 Cloud: Firebase
 
@@ -149,14 +152,14 @@ The app is designed for the teacher to operate. Students use the fingerprint sen
 4. Configure and test Firebase security rules before using real student information.
 5. Verify that student registration and attendance records can be saved and retrieved.
 
-**Security note:** The Android application is operated by the teacher, while students use the fingerprint sensor to record attendance. Students do not need individual app accounts. The current application does not include a teacher login system, so Firebase security rules should be properly configured to protect student information.
+**Security note:** The app includes a basic Login screen for the operator. If the login checks username and password values stored in the MIT App Inventor blocks, it does not provide server-side authentication. Configure Firebase security rules properly to protect student information. Students do not need individual app accounts.
 
 ## 5. How to Use
 
 ### 5.1 Student Registration
 
-1. The teacher opens the app.
-2. Tap **Tap to Continue**.
+1. The teacher or app operator opens the app and uses the Login screen to continue to the main menu.
+2. On the main menu, choose the needed feature.
 3. Select the paired HC-05 Bluetooth device.
 4. Open **Main Menu → Student Registration**.
 5. Enter the student's name and student number.
@@ -207,20 +210,20 @@ The Arduino and app exchange plain-text messages over Bluetooth serial communica
 
 The protocol uses a baud rate of **9600** in the documented implementation.
 
-| Direction     | Message                                 | Meaning                                                                        |
-|---------------|-----------------------------------------|--------------------------------------------------------------------------------|
-| App → Arduino | `REGISTER`                              | Requests fingerprint registration                                              |
-| App → Arduino | `SCAN`                                  | Requests fingerprint matching                                                  |
-| App → Arduino | `CLEARALL`                              | Requests erasing all fingerprints from the sensor                              |
-| App → Arduino | `DELETE\|<id>`                          | Requests erasing one fingerprint from the sensor                               |
-| Arduino → App | `REGISTERED\|<id>`                      | Registration succeeded; `<id>` is the assigned fingerprint ID                  |
-| Arduino → App | `REGISTER_FAILED`                       | Registration failed or timed out                                               |
-| Arduino → App | `MATCH\|<id>\|<yyyy-MM-dd>\|<HH:mm:ss>` | Fingerprint matched, with date and time                                        |
-| Arduino → App | `NO_MATCH`                              | No matching fingerprint was found or no finger was detected within the timeout |
-| Arduino → App | `CLEARED` / `CLEAR_FAILED`              | Result of `CLEARALL`                                                           |
-| Arduino → App | `DELETED\|<id>` / `DELETE_FAILED`       | Result of `DELETE\|<id>`                                                       |
+| Direction | Message | Meaning |
+|---|---|---|
+| App → Arduino | `REGISTER` | Requests fingerprint registration |
+| App → Arduino | `SCAN` | Requests fingerprint matching |
+| App → Arduino | `CLEARALL` | Requests erasing all fingerprints from the sensor |
+| App → Arduino | `DELETE\|<id>` | Requests erasing one fingerprint from the sensor |
+| Arduino → App | `REGISTERED\|<id>` | Registration succeeded; `<id>` is the assigned fingerprint ID |
+| Arduino → App | `REGISTER_FAILED` | Registration failed or timed out |
+| Arduino → App | `MATCH\|<id>\|<yyyy-MM-dd>\|<HH:mm:ss>` | Fingerprint matched, with date and time |
+| Arduino → App | `NO_MATCH` | No matching fingerprint was found or no finger was detected within the timeout |
+| Arduino → App | `CLEARED` / `CLEAR_FAILED` | Result of `CLEARALL` |
+| Arduino → App | `DELETED\|<id>` / `DELETE_FAILED` | Result of `DELETE\|<id>` |
 
-The Arduino and Android app must use the same command names and message format. The current app sends only `REGISTER` and `SCAN`. `CLEARALL` and `DELETE|<id>` are supported by the Arduino for future use, and the same actions are available today through the USB Serial Monitor (section 4.1).
+The Arduino and Android app must use the same command names and message format. The current app sends `REGISTER` and `SCAN`. `CLEARALL` and `DELETE|<id>` are supported by the Arduino for future use, and the same actions are available through the USB Serial Monitor (Section 4.1).
 
 ## 7. Database Structure (Firebase Realtime Database)
 
@@ -229,7 +232,7 @@ The application uses Firebase Realtime Database to store student information and
 | Node | Key | Fields |
 |---|---|---|
 | `Registered Student/{FingerprintID}` | Fingerprint ID | `FingerprintID`, `Name`, `StudentNumber` |
-| `StudentCount` | Top-level value | Stores the most recently assigned fingerprint ID. It is **not** a live count of students and is not updated when students are deleted |
+| `StudentCount` | Top-level value | Stores the most recently assigned fingerprint ID. It is not a live count of students and is not updated when students are deleted |
 | `Attendance/{Date}_{FingerprintID}` | Date and fingerprint ID | `FingerprintID`, `Name`, `StudentNumber`, `Date`, `Time`, `Status` |
 | `AttendanceRecords/{Date}_{FingerprintID}` | Date and fingerprint ID | Same attendance fields; used by the report screen |
 
@@ -237,15 +240,15 @@ The fingerprint ID connects an attendance record to the registered student. Fire
 
 ### 7.1 One Attendance Record per Student per Day
 
-The record key combines the date and fingerprint ID (for example `2026-10-22_4`), so each student has at most one attendance record per day. A repeat scan by the same student on the same day does not create an additional record.
+The record key combines the date and fingerprint ID (for example, `2026-10-22_4`), so each student has at most one attendance record per day. A repeat scan by the same student on the same day does not create an additional record.
 
 ## 8. Documentation
 
-The system diagrams and Architecture Decision Records (ADRs) are stored as zip files in the repository root. Download and extract them to view the contents.
+The system diagrams and Architecture Decision Records (ADRs) are stored in the `Diagram/` and `SIA1_ADR/` folders in the repository.
 
 ### 8.1 System Diagrams
 
-`Diagram.zip` contains the system diagrams, which are `.drawio` files:
+The `Diagram/` folder contains the system diagrams, which are `.drawio` files:
 
 - Level 0 Data Flow Diagram
 - Level 1 Data Flow Diagram
@@ -253,11 +256,11 @@ The system diagrams and Architecture Decision Records (ADRs) are stored as zip f
 - Database schema diagram
 - System flowchart
 
-Extract the archive, then open the `.drawio` files using [diagrams.net](https://app.diagrams.net).
+Open the `.drawio` files using [diagrams.net](https://app.diagrams.net).
 
 ### 8.2 Architecture Decision Records (ADRs)
 
-`SIA1_ADR.zip` contains the ADRs documenting the main design decisions of the system:
+The `SIA1_ADR/` folder contains the ADRs documenting the main design decisions of the system:
 
 - ADR-001: Fingerprint Processing on Arduino
 - ADR-002: Bluetooth Serial Communication
@@ -268,10 +271,10 @@ Each ADR reflects the implementation and decisions confirmed by the group.
 
 ## 9. Known Limitations
 
-- The application is designed for teacher-operated attendance management, while students use fingerprint scanning for attendance. A teacher login system is not currently implemented.
+- The Login screen's security depends on how the login credentials are checked and stored in the app.
 - Firebase access depends on the database rules and configuration. Database security should be checked before real student information is used.
 - The current architecture does not use a separate backend server or custom HTTP API.
-- Fingerprints are stored in the sensor's internal memory, separate from Firebase. Deleting a student in Firebase does not remove their fingerprint from the sensor; it must be removed with `DELETE <id>` or `CLEAR` (section 5.4). The app does not yet have a delete-student screen.
+- Fingerprints are stored in the sensor's internal memory, separate from Firebase. Deleting a student in Firebase does not remove their fingerprint from the sensor; it must be removed with `DELETE <id>` or `CLEAR` (Section 5.4). The app does not yet have a delete-student screen.
 - `StudentCount` holds the last assigned fingerprint ID, not the current number of students.
 - Resetting or replacing the sensor may require students to register their fingerprints again.
 - If the DS3231 loses power, the sketch may set the clock to the compile time. The date and time should be checked after RTC power loss.
